@@ -10,7 +10,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public float _maxSpeed = 10f;
     public float _speed = 0f;
-    public int _maxRoadCount = 6;
+    public int _maxRoadCount = 10;
 
     // Start is called before the first frame update
     void Start()
