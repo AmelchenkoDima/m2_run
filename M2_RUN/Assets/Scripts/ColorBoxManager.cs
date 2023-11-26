@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ColorBoxGenerator : MonoBehaviour
+public class ColorBoxManager : MonoBehaviour
 {
+    public enum Cube
+    {
+        Player = 0,
+        Enemy = 1,
+    }
+
+
     public enum ColorBox
     {
         Red = 0,
@@ -14,6 +21,7 @@ public class ColorBoxGenerator : MonoBehaviour
     }
 
     public ColorBox _colorBox;
+    public Cube _cube;
     [HideInInspector]public int _colorNumBox;
 
     [SerializeField] private Material _RedMaterial;
@@ -49,6 +57,7 @@ public class ColorBoxGenerator : MonoBehaviour
                 gameObject.GetComponent<Renderer>().material = _YellowMaterial;
                 break;
         }
+        
     }
 
     private void RandomColorBox()
@@ -56,4 +65,24 @@ public class ColorBoxGenerator : MonoBehaviour
         _colorNumBox = Random.Range(0, 4);
         _colorBox = (ColorBox)_colorNumBox;
     }
+    
+
+    private void OnMouseDown()
+    {
+        switch (_cube)
+        {
+            case Cube.Player:
+                _colorNumBox += 1;
+                if (_colorNumBox == 4)
+                {
+                    _colorNumBox = 0;
+                }
+                _colorBox = (ColorBox)_colorNumBox;
+            break;
+
+            case Cube.Enemy:
+            break;
+        }
+    }
+
 }

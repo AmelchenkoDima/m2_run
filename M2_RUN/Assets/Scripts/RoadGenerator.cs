@@ -27,9 +27,9 @@ public class NewBehaviourScript : MonoBehaviour
             return;
         }
 
-        foreach (GameObject road in _roadsList)
+        foreach (GameObject _road in _roadsList)
         {
-            road.transform.position -= new Vector3(0f, 0f,_speed * Time.deltaTime);
+            _road.transform.position -= new Vector3(0f, 0f,_speed * Time.deltaTime);
         }
 
         if (_roadsList[0].transform.position.z < -10)
@@ -45,7 +45,7 @@ public class NewBehaviourScript : MonoBehaviour
         Vector3 roadPosition = Vector3.zero;
         if(_roadsList.Count > 0)
         {
-            roadPosition = _roadsList[_roadsList.Count - 1].transform.position + new Vector3(0,0,9.5f);
+            roadPosition = _roadsList[_roadsList.Count - 1].transform.position + new Vector3(0,0,9.96f);
         }
         GameObject _road =  Instantiate(_roadPrefab, roadPosition, Quaternion.identity);
         _road.transform.SetParent(transform);
