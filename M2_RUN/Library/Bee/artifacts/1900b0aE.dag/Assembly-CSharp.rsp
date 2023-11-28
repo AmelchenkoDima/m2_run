@@ -360,7 +360,10 @@
 "Assets/ScriptableScripts/ScriptableCube2.cs"
 "Assets/ScriptableScripts/ScriptableCube3.cs"
 "Assets/Scripts/ColorBoxManager.cs"
+"Assets/Scripts/CubeGener.cs"
 "Assets/Scripts/RoadGenerator.cs"
+"Assets/Scripts/Spawn.cs"
+"Assets/Spawn2.cs"
 -langversion:9.0
 
 /deterministic

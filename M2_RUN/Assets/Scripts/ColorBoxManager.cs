@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class ColorBoxManager : MonoBehaviour
 {
-    public enum Cube
+    public enum Cube // Выбор для определения типа префаба 
     {
-        Player = 0,
-        Enemy = 1,
+        PlayerCube = 0,
+        Cube = 1,
     }
 
 
-    public enum ColorBox
+    public enum ColorBox // Выбор цвета материала 
     {
         Red = 0,
         Green = 1,
@@ -20,9 +20,9 @@ public class ColorBoxManager : MonoBehaviour
         Yellow = 3,
     }
 
-    public ColorBox _colorBox;
     public Cube _cube;
-    [HideInInspector]public int _colorNumBox;
+    public ColorBox _colorBox;
+    private int _colorNumBox;
 
     [SerializeField] private Material _RedMaterial;
     [SerializeField] private Material _GreenMaterial;
@@ -39,7 +39,7 @@ public class ColorBoxManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (_colorBox)
+        switch (_colorBox) // Присвоение материала префабу 
         {
             case ColorBox.Red:
                 gameObject.GetComponent<Renderer>().material = _RedMaterial;
@@ -60,18 +60,18 @@ public class ColorBoxManager : MonoBehaviour
         
     }
 
-    private void RandomColorBox()
+    private void RandomColorBox() // Рандомная генерация цвета 
     {
         _colorNumBox = Random.Range(0, 4);
         _colorBox = (ColorBox)_colorNumBox;
     }
     
 
-    private void OnMouseDown()
+    private void OnMouseDown() // Смена цвета по клику с проверкой типа префаба 
     {
         switch (_cube)
         {
-            case Cube.Player:
+            case Cube.PlayerCube:
                 _colorNumBox += 1;
                 if (_colorNumBox == 4)
                 {
@@ -80,7 +80,7 @@ public class ColorBoxManager : MonoBehaviour
                 _colorBox = (ColorBox)_colorNumBox;
             break;
 
-            case Cube.Enemy:
+            case Cube.Cube:
             break;
         }
     }
