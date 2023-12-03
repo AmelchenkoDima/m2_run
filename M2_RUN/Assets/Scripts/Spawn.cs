@@ -8,15 +8,15 @@ public class Spawn : MonoBehaviour
     [Flags]
     public enum CubeGeneration2
     {
-        UpperLeft = 1 << 0,
-        UpperRight = 2 << 1,
-        LowerLeft = 3 << 2,
-        LowerRight = 4 << 3,
+        LowerLeft = 1 << 0,
+        LowerRight = 1 << 1,
+        UpperLeft = 1 << 2,
+        UpperRight = 1 << 3,
     }
-    public bool UpperLeft = false;
-    public bool UpperRight = false;
-    public bool LowerLeft = false;
-    public bool LowerRight = false;
+    //public bool UpperLeft = false;
+    //public bool UpperRight = false;
+    //public bool LowerLeft = false;
+    //public bool LowerRight = false;
 
     public int LevelCube;
     public GameObject CubePrefab;
@@ -36,29 +36,26 @@ public class Spawn : MonoBehaviour
 
     public void CubePositionGeneranor()
     {
-
-        //Vector3 cubePosition = Vector3.zero;
-        if (LowerLeft == true)//VisualizeCube2 == CubeGeneration2.LowerLeft)
+        if ((VisualizeCube2 & CubeGeneration2.LowerLeft) != 0)
         {
-            //cubePosition += new Vector3(-0.251f, 0.25f, 0f);
             GameObject cubeLowerLeft = Instantiate(CubePrefab, new Vector3(-0.250f, 0.25f, 0f), Quaternion.identity);
             _cubeList.Add(cubeLowerLeft);
         }
-        if (LowerRight == true)//VisualizeCube2 == CubeGeneration2.LowerRight) 
+
+        if ((VisualizeCube2 & CubeGeneration2.UpperLeft) != 0)
         {
-            //cubePosition += new Vector3(0.251f, 0.25f, 0f);
-            GameObject cubeLowerRight = Instantiate(CubePrefab, new Vector3(0.250f, 0.25f, 0f), Quaternion.identity);
-            _cubeList.Add(cubeLowerRight);
-        }
-        if (UpperLeft == true)//VisualizeCube2 == CubeGeneration2.UpperLeft)
-        {
-            //cubePosition += new Vector3(-0.251f, 0.76f, 0f);
             GameObject cubeUpperLeft = Instantiate(CubePrefab, new Vector3(-0.250f, 0.76f, 0f), Quaternion.identity);
             _cubeList.Add(cubeUpperLeft);
         }
-        if (UpperRight == true)//VisualizeCube2 == CubeGeneration2.UpperRight) 
+
+        if ((VisualizeCube2 & CubeGeneration2.LowerRight) != 0) 
         {
-            //cubePosition += new Vector3(0.251f, 0.76f, 0f);
+            GameObject cubeLowerRight = Instantiate(CubePrefab, new Vector3(0.250f, 0.25f, 0f), Quaternion.identity);
+            _cubeList.Add(cubeLowerRight);
+        }
+
+        if ((VisualizeCube2 & CubeGeneration2.UpperRight) != 0) 
+        {
             GameObject cubeUpperRight = Instantiate(CubePrefab, new Vector3(0.250f, 0.76f, 0f), Quaternion.identity);
             _cubeList.Add(cubeUpperRight);
         }
