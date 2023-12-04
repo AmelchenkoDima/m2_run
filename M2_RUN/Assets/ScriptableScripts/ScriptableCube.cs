@@ -24,7 +24,7 @@ public enum CubeGenThreeByThree
     UpperRight = 1 << 8,
 }
 
-[CreateAssetMenu(fileName = "CubeGeneration", menuName = "Cube/NewCobe")]
+[CreateAssetMenu(fileName = "CubeGeneration", menuName = "Cube/NewCube")]
 public class ScriptableCube : ScriptableObject
 {
     [SerializeField] private int _levelCube;

@@ -360,10 +360,9 @@
 "Assets/ScriptableScripts/ScriptableCube.cs"
 "Assets/Scripts/ColorBoxManager.cs"
 "Assets/Scripts/CubeGener.cs"
-"Assets/Scripts/ObjectManager.cs"
+"Assets/Scripts/MovementObj.cs"
 "Assets/Scripts/RoadGenerator.cs"
-"Assets/Scripts/Spawn.cs"
-"Assets/Scripts/SpawnGener.cs"
+"Assets/Scripts/SpawnObjManager.cs"
 "Assets/Spawn2.cs"
 -langversion:9.0
 

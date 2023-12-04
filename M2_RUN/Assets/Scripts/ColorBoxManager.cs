@@ -20,9 +20,10 @@ public class ColorBoxManager : MonoBehaviour
         Yellow = 3,
     }
 
-    public Cube _cube;
-    public ColorBox _colorBox;
     private int _colorNumBox;
+
+    [SerializeField] private Cube _cube;
+    [SerializeField] private ColorBox _colorBox;
 
     [SerializeField] private Material _RedMaterial;
     [SerializeField] private Material _GreenMaterial;
@@ -68,20 +69,14 @@ public class ColorBoxManager : MonoBehaviour
     
 
     private void OnMouseDown() // Смена цвета по клику с проверкой типа префаба 
-    {
-        switch (_cube)
+    {   if(_cube == Cube.PlayerCube)
         {
-            case Cube.PlayerCube:
-                _colorNumBox += 1;
-                if (_colorNumBox == 4)
-                {
-                    _colorNumBox = 0;
-                }
-                _colorBox = (ColorBox)_colorNumBox;
-            break;
-
-            case Cube.Cube:
-            break;
+            _colorNumBox += 1;
+            if (_colorNumBox == 4)
+            {
+                _colorNumBox = 0;
+            }
+            _colorBox = (ColorBox)_colorNumBox;
         }
     }
 

@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
-    public GameObject _roadPrefab; //Префаб платформы
+    [SerializeField] private GameObject _roadPrefab; //Префаб платформы
     private List<GameObject> _roadsList = new List<GameObject>(); //Список храняший префабы платформ
 
-    public float _maxSpeed = 10f; //Максимальная скорость 
-    public float _speed = 0f; // Текущая скорость 
-    public int _maxRoadCount = 10; // Крол-во платформ в списке 
+    [SerializeField] private float _maxSpeed = 10f; //Максимальная скорость 
+    [SerializeField] private float _speed = 0f; // Текущая скорость 
+    [SerializeField] private int _maxRoadCount = 10; // Крол-во платформ в списке 
 
     // Start is called before the first frame update
     void Start()
