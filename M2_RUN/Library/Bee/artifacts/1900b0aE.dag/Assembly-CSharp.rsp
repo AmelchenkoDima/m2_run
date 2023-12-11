@@ -358,6 +358,7 @@
 -analyzer:"C:/Program Files/Unity 2022.3.5f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/ScriptableScripts/CubeDatabase.cs"
 "Assets/ScriptableScripts/ScriptableCube.cs"
+"Assets/Scripts/CheckCubes.cs"
 "Assets/Scripts/ColorBoxManager.cs"
 "Assets/Scripts/CubeGener.cs"
 "Assets/Scripts/MovementObj.cs"

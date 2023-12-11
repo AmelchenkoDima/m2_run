@@ -6,20 +6,21 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private GameObject _roadPrefab; //Префаб платформы
     private List<GameObject> _roadsList = new List<GameObject>(); //Список храняший префабы платформ
 
-    [SerializeField] private float _maxSpeed = 10f; //Максимальная скорость 
-    [SerializeField] private float _speed = 0f; // Текущая скорость 
     [SerializeField] private int _maxRoadCount = 10; // Крол-во платформ в списке 
+    [SerializeField] private float _speed = 0f; // Текущая скорость 
+    public float _maxSpeed = 10f; //Максимальная скорость 
 
     // Start is called before the first frame update
     void Start()
     {
         ResetLevel();
-        StartLevel();
     }
 
     // Update is called once per frame
     void Update()
     {
+        StartLevel();
+
         if (_speed == 0f) // Проверка текущей скорости 
         {
             return;
@@ -42,9 +43,9 @@ public class RoadGenerator : MonoBehaviour
     
     private void MovmentRoad() // Движение и удаление платформ  
     {
-        foreach (GameObject roads in _roadsList) // Движение платформ 
+        foreach (GameObject road in _roadsList) // Движение платформ 
         {
-            roads.transform.position -= new Vector3(0f, 0f, _speed * Time.deltaTime);
+            road.transform.position -= new Vector3(0f, 0f, _speed * Time.deltaTime);
         }
 
         if (_roadsList[0].transform.position.z < -10) //Удаление платформы зашедшей за камеру 

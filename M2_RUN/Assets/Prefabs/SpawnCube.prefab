@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5913059155366997673}
   - component: {fileID: 6093511063067372334}
   - component: {fileID: 3909407857368493114}
+  - component: {fileID: -3179344176354474323}
   m_Layer: 0
   m_Name: SpawnCube
   m_TagString: Untagged
@@ -97,9 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aeb2fe8a5cefcf47b138a537fb87e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorBox: 0
   _cube: 1
-  _colorNumBox: 0
+  _colorBox: 0
   _RedMaterial: {fileID: 2100000, guid: a51463a3987baa0499a03e2e61934bd9, type: 2}
   _GreenMaterial: {fileID: 2100000, guid: fb991c87fd565c5478a977c0cda986d7, type: 2}
   _BlueMaterial: {fileID: 2100000, guid: 67397792f9c77ab4b94203a6f31ae677, type: 2}
@@ -120,8 +120,35 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-3179344176354474323
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797557407650687386}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
