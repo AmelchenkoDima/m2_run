@@ -11,6 +11,7 @@ public class SpawnObjManager : MonoBehaviour
 
     [SerializeField] private CubeDatabase _databaseObj;
     [SerializeField] private Cube _cube;
+    [SerializeField] private Transform _transformObj;
     [HideInInspector] public List<GameObject> _cubeObjList = new List<GameObject>();
     [HideInInspector] public List<GameObject> _playerObjList = new List<GameObject>();
     public int _lvl = 0;
@@ -27,11 +28,14 @@ public class SpawnObjManager : MonoBehaviour
 
     private void LevelCheck()
     {
-        if(_cube == Cube.PlayerCube)
+        if (_cubeObjList.Count == 0)
         {
-            LevelCheckPlayerCube();
+            if (_cube == Cube.PlayerCube)
+            {
+                LevelCheckPlayerCube();
+            }
+            else LevelCheckCube();
         }
-        else LevelCheckCube();
     }
 
     private ScriptableCube LevelCheckPlayerCube()
@@ -64,8 +68,7 @@ public class SpawnObjManager : MonoBehaviour
     {
         if ((_scriptableCube.VisualTwoByTwo & CubeGenTwoByTwo.LowerLeft) != 0)
         {
-            GameObject boxLowerLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.250f, 0.25f, 0f), Quaternion.identity);
-            boxLowerLeft.transform.SetParent(transform);
+            GameObject boxLowerLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.250f, 0.25f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -76,8 +79,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualTwoByTwo & CubeGenTwoByTwo.UpperLeft) != 0)
         {
-            GameObject boxUpperLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.250f, 0.751f, 0f), Quaternion.identity);
-            boxUpperLeft.transform.SetParent(transform);
+            GameObject boxUpperLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.250f, 0.751f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -88,8 +90,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualTwoByTwo & CubeGenTwoByTwo.LowerRight) != 0)
         {
-            GameObject boxLowerRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.250f, 0.25f, 0f), Quaternion.identity);
-            boxLowerRight.transform.SetParent(transform);
+            GameObject boxLowerRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.250f, 0.25f, 0f), Quaternion.identity, _transformObj);
 
             if( _cube == Cube.PlayerCube)
             {
@@ -100,8 +101,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualTwoByTwo & CubeGenTwoByTwo.UpperRight) != 0)
         {
-            GameObject boxUpperRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.250f, 0.751f, 0f), Quaternion.identity);
-            boxUpperRight.transform.SetParent(transform);
+            GameObject boxUpperRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.250f, 0.751f, 0f), Quaternion.identity, _transformObj);
 
             if ( _cube == Cube.PlayerCube)
             {
@@ -115,8 +115,7 @@ public class SpawnObjManager : MonoBehaviour
     {
         if((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.LowerLeft) != 0)
         {
-            GameObject boxLowerLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.501f,0.25f,0f), Quaternion.identity);
-            boxLowerLeft.transform.SetParent(transform);
+            GameObject boxLowerLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.501f,0.25f,0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -127,8 +126,8 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.LowerCenter) != 0)
         {
-            GameObject boxLowerCenter = Instantiate(_scriptableCube.CubePrefab, new Vector3(0f, 0.25f, 0f), Quaternion.identity);
-            boxLowerCenter.transform.SetParent(transform);
+            GameObject boxLowerCenter = Instantiate(_scriptableCube.CubePrefab, new Vector3(0f, 0.25f, 0f), Quaternion.identity, _transformObj);
+
             if (_cube == Cube.PlayerCube)
             {
                 _playerObjList.Add(boxLowerCenter);
@@ -138,8 +137,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.LowerRight) != 0)
         {
-            GameObject boxLowerRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.501f, 0.25f, 0f), Quaternion.identity);
-            boxLowerRight.transform.SetParent(transform);
+            GameObject boxLowerRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.501f, 0.25f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -150,8 +148,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.MiddleLeft) != 0)
         {
-            GameObject boxMiddleLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.501f, 0.751f, 0f), Quaternion.identity);
-            boxMiddleLeft.transform.SetParent(transform);
+            GameObject boxMiddleLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.501f, 0.751f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -162,8 +159,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.MiddleCenter) != 0)
         {
-            GameObject boxMiddleCenter = Instantiate(_scriptableCube.CubePrefab, new Vector3(0f, 0.751f, 0f), Quaternion.identity);
-            boxMiddleCenter.transform.SetParent(transform);
+            GameObject boxMiddleCenter = Instantiate(_scriptableCube.CubePrefab, new Vector3(0f, 0.751f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -174,8 +170,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.MiddleRight) != 0)
         {
-            GameObject boxMiddleRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.501f, 0.751f, 0f), Quaternion.identity);
-            boxMiddleRight.transform.SetParent(transform);
+            GameObject boxMiddleRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.501f, 0.751f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -186,8 +181,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.UpperLeft) != 0)
         {
-            GameObject boxUpperLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.501f, 1.251f, 0f), Quaternion.identity);
-            boxUpperLeft.transform.SetParent(transform);
+            GameObject boxUpperLeft = Instantiate(_scriptableCube.CubePrefab, new Vector3(-0.501f, 1.251f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -198,8 +192,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.UpperCenter) != 0)
         {
-            GameObject boxUpperCenter = Instantiate(_scriptableCube.CubePrefab, new Vector3(0f, 1.251f, 0f), Quaternion.identity);
-            boxUpperCenter.transform.SetParent(transform);
+            GameObject boxUpperCenter = Instantiate(_scriptableCube.CubePrefab, new Vector3(0f, 1.251f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
@@ -210,8 +203,7 @@ public class SpawnObjManager : MonoBehaviour
 
         if ((_scriptableCube.VisualThreeByThree & CubeGenThreeByThree.UpperRight) != 0)
         {
-            GameObject boxUpperRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.501f, 1.251f, 0f), Quaternion.identity);
-            boxUpperRight.transform.SetParent(transform);
+            GameObject boxUpperRight = Instantiate(_scriptableCube.CubePrefab, new Vector3(0.501f, 1.251f, 0f), Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {

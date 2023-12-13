@@ -2,45 +2,37 @@
 using UnityEngine;
 
 public class MovementObj : MonoBehaviour
-{   
+{ 
     [SerializeField] private float _speed = 0f; // Текущая скорость 
-    private SpawnObjManager _spawnObjManager;
+    [SerializeField] private GameObject _movementObj;
     public float _maxSpeed = 5f; //Максимальная скорость 
 
 
     void Start()
     {
-        _spawnObjManager = GetComponent<SpawnObjManager>();
-        ResetMovment();
+        ResetMovmentObj();
     }
 
     private void Update()
     {
-        StartMovment();
-        MovmentCubeObj();   
+        StartMovmentObj();
+        MovmentObj();
     }
 
-    private void StartMovment() 
+    private void StartMovmentObj() 
     {
         _speed = _maxSpeed;
     }
-    private void MovmentCubeObj()  
+    private void MovmentObj()  
     {
-        for (int i = 0; i < _spawnObjManager._cubeObjList.Count; i++)
-        {
-            GameObject box = _spawnObjManager._cubeObjList[i];
-            box.transform.position -= new Vector3(0f, 0f, _speed * Time.deltaTime);
-        }
+        _movementObj.transform.position -= new Vector3(0f, 0f, _speed * Time.deltaTime);        
     }
-    public void ResetMovment() // Очистка уровня 
+    public void ResetMovmentObj() // Очистка уровня 
     {
         _speed = 0f;
 
-        for (int i = 0; i < _spawnObjManager._cubeObjList.Count; i++)
-        {
-            GameObject box = _spawnObjManager._cubeObjList[i];
-            box.transform.position += new Vector3(0f, 0f, 60f);
-        }
+        _movementObj.transform.position += new Vector3(0f, 0f, 60f);
+
     }
 
 }

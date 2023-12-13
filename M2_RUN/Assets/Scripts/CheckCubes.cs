@@ -1,59 +1,59 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckCubes : MonoBehaviour
 {
-    //[SerializeField] private GameObject _playerGameObject;
-    //[SerializeField] private GameObject _cubeGameObject;
-    //[SerializeField] private BoxCollider _boxCollider;
     public MovementObj _movementObj;
     public RoadGenerator _roadGenerator;
     public SpawnObjManager _spawnObj;
     public SpawnObjManager _spawnPlayer;
+    private SpawnObjManager _spawnObjManager;
 
 
     void Start()
-    {   
-        
+    {
+        _spawnObjManager = GetComponent<SpawnObjManager>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        Debug.Log(_movementObj._maxSpeed);
+        LevelCheck();
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void LevelCheck()
     {
-        _movementObj._maxSpeed = 3f;
-
-        List<GameObject> objectsToRemove = new List<GameObject>();
-
-        foreach (GameObject box in _spawnObj._cubeObjList)
+        if (_spawnObj._cubeObjList.Count == 0)
         {
-            foreach (GameObject boxPlayer in _spawnPlayer._playerObjList)
-            {
-                if (boxPlayer.GetComponent<Renderer>().material == box.GetComponent<Renderer>().material)
-                {
-                    //objectsToRemove.Add(box);
-                    //objectsToRemove.Add(boxPlayer);
-                    Debug.Log($"Player: {boxPlayer.GetComponent<Renderer>().material}");
-                    Debug.Log($"Cube: {box.GetComponent<Renderer>().material}");
-                }
-            }
+            //_spawnObjManager._lvl += 1;
+            Debug.Log($"{_spawnObj._cubeObjList.Count}");
+            Debug.Log($"{_spawnObjManager._lvl}");
         }
-
-        foreach (GameObject obj in objectsToRemove)
-        {
-            _spawnObj._cubeObjList.Remove(obj);
-            _spawnPlayer._playerObjList.Remove(obj);
-        }
+        Debug.Log($"{_spawnObj._cubeObjList.Count}");
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other) //листы _spawnObj._cubeObjList и _spawnPlayer._playerObjList не очищаются. 
     {
+        List<int> _objList = new List<int>();
         _movementObj._maxSpeed = 0f;
-        _roadGenerator._maxSpeed = 0f;
+
+        for (int i = 0; i < _spawnObj._cubeObjList.Count; i++)
+        {
+            if (_spawnObj._cubeObjList[i].GetComponent<Renderer>().sharedMaterial == _spawnPlayer._playerObjList[i].GetComponent<Renderer>().sharedMaterial)
+            {
+                _objList.Add(i);
+            }
+            else _roadGenerator._maxSpeed = 0f;
+        }
+
+        foreach (int i in _objList)
+        {
+            Destroy(_spawnObj._cubeObjList[i]);
+            Destroy(_spawnPlayer._playerObjList[i]);
+        }
+
+       
     }
 }
