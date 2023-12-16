@@ -3,25 +3,25 @@ using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject _roadPrefab; //Префаб платформы
-    private List<GameObject> _roadsList = new List<GameObject>(); //Список храняший префабы платформ
+    [SerializeField] private GameObject _roadPrefab; 
+    [SerializeField] private int _maxRoadCount = 10;
+    [SerializeField] private float _speed = 0f; 
+                                                
+    private List<GameObject> _roadsList = new List<GameObject>();
 
-    [SerializeField] private int _maxRoadCount = 10; // Крол-во платформ в списке 
-    [SerializeField] private float _speed = 0f; // Текущая скорость 
-    public float _maxSpeed = 10f; //Максимальная скорость 
+    public float _maxSpeed = 10f;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         ResetLevel();
     }
 
-    // Update is called once per frame
     void Update()
     {
         StartLevel();
 
-        if (_speed == 0f) // Проверка текущей скорости 
+        if (_speed == 0f)
         {
             return;
         }
@@ -29,7 +29,7 @@ public class RoadGenerator : MonoBehaviour
         MovmentRoad();
     }
 
-    private void CreateNextRoad() // Добавление нового префаба платформы 
+    private void CreateNextRoad()
     {
         Vector3 roadPosition = Vector3.zero;
         if(_roadsList.Count > 0)
@@ -41,14 +41,14 @@ public class RoadGenerator : MonoBehaviour
         _roadsList.Add(road);
     }
     
-    private void MovmentRoad() // Движение и удаление платформ  
+    private void MovmentRoad()
     {
-        foreach (GameObject road in _roadsList) // Движение платформ 
+        foreach (GameObject road in _roadsList)
         {
             road.transform.position -= new Vector3(0f, 0f, _speed * Time.deltaTime);
         }
 
-        if (_roadsList[0].transform.position.z < -10) //Удаление платформы зашедшей за камеру 
+        if (_roadsList[0].transform.position.z < -10)
         {
             Destroy(_roadsList[0]);
             _roadsList.RemoveAt(0);
@@ -56,12 +56,12 @@ public class RoadGenerator : MonoBehaviour
             CreateNextRoad();
         }
     }
-    private void StartLevel() // Присвоение скоростей 
+    private void StartLevel()
     {
         _speed = _maxSpeed;
     }
 
-    public void ResetLevel() // Очистка уровня 
+    public void ResetLevel()
     {
         _speed = 0f;
         while(_roadsList.Count > 0)
@@ -74,5 +74,10 @@ public class RoadGenerator : MonoBehaviour
             CreateNextRoad();
         }
     }
+
+    public void ResetSpeed() 
+    { 
+        _maxSpeed = 0f; 
+    }   
 
 }

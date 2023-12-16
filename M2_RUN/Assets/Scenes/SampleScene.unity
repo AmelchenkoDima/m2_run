@@ -216,10 +216,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _databaseObj: {fileID: 11400000, guid: 8d0ec515aea36dc4ebe18f2a21fe7d54, type: 2}
   _cube: 1
-  _transformObj: {fileID: 559423339}
   _cubeObjList: []
   _playerObjList: []
-  _lvl: 1
+  _transformObj: {fileID: 559423339}
+  _lvl: 0
 --- !u!4 &559423339
 Transform:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ Transform:
   m_GameObject: {fileID: 559423337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -905,10 +905,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _databaseObj: {fileID: 11400000, guid: 8d0ec515aea36dc4ebe18f2a21fe7d54, type: 2}
   _cube: 0
-  _transformObj: {fileID: 1907751337}
   _cubeObjList: []
   _playerObjList: []
-  _lvl: 1
+  _transformObj: {fileID: 1907751337}
+  _lvl: 0
 --- !u!1001 &5593739157939756616
 PrefabInstance:
   m_ObjectHideFlags: 0
