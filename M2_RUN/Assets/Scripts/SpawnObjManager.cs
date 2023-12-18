@@ -31,6 +31,8 @@ public class SpawnObjManager : MonoBehaviour
         if (_transformObj.childCount == 0)
         {
             _lvl += 1;
+            _cubeObjList.Clear();
+            _playerObjList.Clear();
             CheckEnumCube();
         }
     }

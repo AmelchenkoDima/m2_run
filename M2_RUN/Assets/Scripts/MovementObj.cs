@@ -35,6 +35,6 @@ public class MovementObj : MonoBehaviour
    public void ResetPosition()
     {
         _movementObj.transform.position += new Vector3(0f, 0f, 60f);
-        _maxSpeed = 5f;
+        _maxSpeed = 3f;
     }
 }
