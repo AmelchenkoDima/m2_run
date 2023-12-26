@@ -37,31 +37,5 @@ public class ScriptableCube : ScriptableObject
     public GameObject CubePrefab => _cubePrefab;
     public CubeGenTwoByTwo VisualTwoByTwo => _visualCubeTwoByTwo;
     public CubeGenThreeByThree VisualThreeByThree => _visualCubeThreeByThree;
-
-    //public CubeObj CreateCube()
-    //{
-    //    CubeObj newCube = new CubeObj(this);
-    //    return newCube;
-    //}
 }
-
-//[System.Serializable]
-//public class CubeObj
-//{
-//    public int _levelCube;
-//    public GameObject _boxObject;
-
-//    public CubeGenTwoByTwo _visCubeTwoByTwo;
-//    public CubeGenThreeByThree _visCubeThreeByThree;
-
-//    public CubeObj(ScriptableCube _cubeOb)
-//    {
-//        _levelCube = _cube2.LevelCube;
-//        _boxObject = _cube2.CubePrefab;
-
-//        _visCubeTwoByTwo = _cube2.VisualizeCubeTwoByTwo;
-//        _visCubeThreeByThree = 
-//    }
-
-//}
 

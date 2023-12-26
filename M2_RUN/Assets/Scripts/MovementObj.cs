@@ -3,38 +3,33 @@ using UnityEngine;
 public class MovementObj : MonoBehaviour
 { 
     [SerializeField] private float _speed = 0f;
-    [SerializeField] private GameObject _movementObj;
+    [SerializeField] private GameObject _movementGameObj;
  
-    public float _maxSpeed = 5f;
+    public float maxSpeed = 6f;
 
-
-    void Start()
-    {
-        ResetMovmentObj();
-    }
 
     private void Update()
     {
-        StartMovmentObj();
-        MovmentObj();
+        StartMovment();
+        Movment();
     }
 
-    private void StartMovmentObj() 
+    private void StartMovment() 
     {
-        _speed = _maxSpeed;
+        _speed = maxSpeed;
     }
-    private void MovmentObj()  
+    private void Movment()  
     {
-        _movementObj.transform.position -= new Vector3(0f, 0f, _speed * Time.deltaTime);        
+        _movementGameObj.transform.position -= new Vector3(0f, 0f, _speed * Time.deltaTime);        
     }
-    public void ResetMovmentObj()
+    public void ResetMovment()
     {
         _speed = 0f;
     }
 
    public void ResetPosition()
     {
-        _movementObj.transform.position += new Vector3(0f, 0f, 60f);
-        _maxSpeed = 3f;
+        _movementGameObj.transform.position += new Vector3(0f, 0f, 60f);
+        maxSpeed = 3f;
     }
 }

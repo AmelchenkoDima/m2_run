@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ColorBoxManager : MonoBehaviour
 {
-    public enum Cube // Выбор для определения типа префаба 
+    public enum Cube
     {
         PlayerCube = 0,
         Cube = 1,
     }
 
 
-    public enum ColorBox // Выбор цвета материала 
+    public enum ColorBox
     {
         Red = 0,
         Green = 1,
@@ -24,50 +24,48 @@ public class ColorBoxManager : MonoBehaviour
     [SerializeField] private Cube _cube;
     [SerializeField] private ColorBox _colorBox;
 
-    [SerializeField] private Material _RedMaterial;
-    [SerializeField] private Material _GreenMaterial;
-    [SerializeField] private Material _BlueMaterial;
-    [SerializeField] private Material _YellowMaterial;
+    [SerializeField] private Material _redMaterial;
+    [SerializeField] private Material _greenMaterial;
+    [SerializeField] private Material _blueMaterial;
+    [SerializeField] private Material _yellowMaterial;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         RandomColorBox();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AssignmentColor()
     {
-        switch (_colorBox) // Присвоение материала префабу 
+        switch (_colorBox)
         {
             case ColorBox.Red:
-                gameObject.GetComponent<Renderer>().material = _RedMaterial;
+                gameObject.GetComponent<Renderer>().material = _redMaterial;
                 break;
 
             case ColorBox.Green:
-                gameObject.GetComponent<Renderer>().material = _GreenMaterial;
+                gameObject.GetComponent<Renderer>().material = _greenMaterial;
                 break;
 
             case ColorBox.Blue:
-                gameObject.GetComponent<Renderer>().material = _BlueMaterial;
+                gameObject.GetComponent<Renderer>().material = _blueMaterial;
                 break;
 
             case ColorBox.Yellow:
-                gameObject.GetComponent<Renderer>().material = _YellowMaterial;
+                gameObject.GetComponent<Renderer>().material = _yellowMaterial;
                 break;
         }
-        
     }
 
-    private void RandomColorBox() // Рандомная генерация цвета 
+    public void RandomColorBox()
     {
         _colorNumBox = Random.Range(0, 4);
         _colorBox = (ColorBox)_colorNumBox;
-    }
-    
 
-    private void OnMouseDown() // Смена цвета по клику с проверкой типа префаба 
+        AssignmentColor();
+    }
+
+
+    private void OnMouseDown()
     {   if(_cube == Cube.PlayerCube)
         {
             _colorNumBox += 1;
@@ -76,6 +74,8 @@ public class ColorBoxManager : MonoBehaviour
                 _colorNumBox = 0;
             }
             _colorBox = (ColorBox)_colorNumBox;
+
+            AssignmentColor();
         }
     }
 

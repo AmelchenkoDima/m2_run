@@ -9,23 +9,13 @@ public class RoadGenerator : MonoBehaviour
                                                 
     private List<GameObject> _roadsList = new List<GameObject>();
 
-    public float _maxSpeed = 10f;
+    public float maxSpeed = 10f;
 
 
-    void Start()
-    {
-        ResetLevel();
-    }
 
     void Update()
     {
         StartLevel();
-
-        if (_speed == 0f)
-        {
-            return;
-        }
-
         MovmentRoad();
     }
 
@@ -58,7 +48,7 @@ public class RoadGenerator : MonoBehaviour
     }
     private void StartLevel()
     {
-        _speed = _maxSpeed;
+        _speed = maxSpeed;
     }
 
     public void ResetLevel()
@@ -77,7 +67,7 @@ public class RoadGenerator : MonoBehaviour
 
     public void ResetSpeed() 
     { 
-        _maxSpeed = 0f; 
+        maxSpeed = 0f; 
     }   
 
 }
