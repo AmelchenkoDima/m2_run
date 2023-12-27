@@ -32,13 +32,11 @@ public class SpawnObjManager : MonoBehaviour
             _cubeObjList.Clear();
             _playerObjList.Clear();
             CheckEnumCube();
-            if (_cube == Cube.PlayerCube) 
-            {
-                _movementObj.ResetPosition();
-                _roadGenerator.ResetSpeed();
-            }
+            _movementObj.ResetPosition();
+            _roadGenerator.ResetSpeed();
         }
     }
+
 
     public void ResetLvl()
     {
@@ -51,6 +49,7 @@ public class SpawnObjManager : MonoBehaviour
         lvl += 1;
         CheckEnumCube();
     }
+
 
     private void CheckEnumCube()
     {
@@ -65,6 +64,7 @@ public class SpawnObjManager : MonoBehaviour
 
     }
 
+
     private void LevelCheckPlayerCube()
     {
         for (int i = 0; i < _databaseObj._playerGetCube.Count; i++)
@@ -78,6 +78,7 @@ public class SpawnObjManager : MonoBehaviour
         InstObjTwoByTwo();
         InstObjThreeByThree();
     }
+
 
     private void LevelCheckCube()
     {
@@ -101,6 +102,7 @@ public class SpawnObjManager : MonoBehaviour
         GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.LowerRight, new Vector3(0.250f, 0.25f, transformObj.position.z));
         GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.UpperRight, new Vector3(0.250f, 0.751f, transformObj.position.z));
     }
+
 
     private void InstObjThreeByThree()
     {

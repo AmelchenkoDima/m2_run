@@ -10,26 +10,35 @@ public class MovementObj : MonoBehaviour
 
     private void Update()
     {
-        StartMovment();
-        Movment();
+        if (_speed > 0f)
+        {
+            Movment();
+        }
     }
 
-    private void StartMovment() 
+
+    public void StartStopMovment(float MaxSpeed) 
     {
-        _speed = maxSpeed;
+        _speed = MaxSpeed;
     }
+
+
     private void Movment()  
     {
         _movementGameObj.transform.position -= new Vector3(0f, 0f, _speed * Time.deltaTime);        
     }
+
+
     public void ResetMovment()
     {
         _speed = 0f;
+        StartStopMovment(maxSpeed);
     }
+
 
    public void ResetPosition()
     {
-        _movementGameObj.transform.position += new Vector3(0f, 0f, 60f);
-        maxSpeed = 3f;
+        _movementGameObj.transform.position += new Vector3(0f, 0f, 30f);
+        StartStopMovment(maxSpeed = 4f);
     }
 }

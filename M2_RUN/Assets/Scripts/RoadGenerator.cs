@@ -14,10 +14,13 @@ public class RoadGenerator : MonoBehaviour
 
 
     void Update()
-    {
-        StartLevel();
-        MovmentRoad();
+    { 
+        if(_speed > 0f)
+        {
+            MovmentRoad();
+        }
     }
+
 
     private void CreateNextRoad()
     {
@@ -31,6 +34,7 @@ public class RoadGenerator : MonoBehaviour
         _roadsList.Add(road);
     }
     
+
     private void MovmentRoad()
     {
         foreach (GameObject road in _roadsList)
@@ -46,10 +50,13 @@ public class RoadGenerator : MonoBehaviour
             CreateNextRoad();
         }
     }
-    private void StartLevel()
+
+
+    public void StartStopMovament(float MaxSpeed)
     {
-        _speed = maxSpeed;
+        _speed = MaxSpeed;
     }
+
 
     public void ResetLevel()
     {
@@ -63,11 +70,12 @@ public class RoadGenerator : MonoBehaviour
         {
             CreateNextRoad();
         }
+        StartStopMovament(maxSpeed);
     }
 
-    public void ResetSpeed() 
-    { 
-        maxSpeed = 0f; 
-    }   
 
+    public void ResetSpeed() 
+    {
+        StartStopMovament(maxSpeed);
+    }   
 }

@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCubeBase:
   - {fileID: 11400000, guid: 82f03d7c8cc606b41a5d4d5446375414, type: 2}
+  - {fileID: 11400000, guid: bf5c9e2264a6b804bbda373c23ed5fcd, type: 2}
   - {fileID: 11400000, guid: e9a6e5b6e9758cb4eace8784b0ad47ad, type: 2}
   _playerGetCube: []
   _cubeBase:
   - {fileID: 11400000, guid: bc406ee0e8f46ec49b93581b918dd9dc, type: 2}
+  - {fileID: 11400000, guid: 875839a3edce95042a68825264e1c7a1, type: 2}
   - {fileID: 11400000, guid: 9722d1e6522b6fc4d8fa353789feb562, type: 2}
   _getCube: []

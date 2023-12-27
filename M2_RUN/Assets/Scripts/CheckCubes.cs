@@ -12,7 +12,8 @@ public class CheckCubes : MonoBehaviour
     public void OnTriggerEnter(Collider other) 
     {
         List<int> _objList = new List<int>();
-        _movementObj.maxSpeed = 0f;
+        _movementObj.StartStopMovment(_movementObj.maxSpeed = 0f);
+
 
         for (int i = 0; i < _player._playerObjList.Count; i++)
         {
@@ -20,9 +21,10 @@ public class CheckCubes : MonoBehaviour
             {
                 _objList.Add(i);
             }
-            _roadGenerator.maxSpeed = 0f;
-            _movementObj.maxSpeed = 0f;
+            _roadGenerator.StartStopMovament(_roadGenerator.maxSpeed = 0f);
+            _movementObj.StartStopMovment(_movementObj.maxSpeed = 0f);
         }
+
 
         foreach (int i in _objList)
         {

@@ -29,10 +29,12 @@ public class ColorBoxManager : MonoBehaviour
     [SerializeField] private Material _blueMaterial;
     [SerializeField] private Material _yellowMaterial;
 
+
     private void Start()
     {
         RandomColorBox();
     }
+
 
     private void AssignmentColor()
     {
@@ -55,6 +57,7 @@ public class ColorBoxManager : MonoBehaviour
                 break;
         }
     }
+
 
     public void RandomColorBox()
     {

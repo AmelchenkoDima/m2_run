@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dab8cab0b7aaa1489efbfb2a07c8ea4, type: 3}
   m_Name: Cube3_3
   m_EditorClassIdentifier: 
-  _levelCube: 2
+  _levelCube: 5
   _cubePrefab: {fileID: 2797557407650687386, guid: 50f3f195817066644a536ed9d6996325, type: 3}
   _visualCubeTwoByTwo: 0
   _visualCubeThreeByThree: -1

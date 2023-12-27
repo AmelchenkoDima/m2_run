@@ -16,9 +16,4 @@ public class GameController : MonoBehaviour
         _spawnObjManagerPlayer.ResetLvl();
         _spawnObjManagerCube.ResetLvl();
     }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }
