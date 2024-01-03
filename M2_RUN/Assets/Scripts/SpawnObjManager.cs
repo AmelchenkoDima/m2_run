@@ -118,36 +118,36 @@ public class SpawnObjManager : MonoBehaviour
     }
 
 
-    private void GenerateFigureToo(CubeGenTwoByTwo scriptableVisualFigure, CubeGenTwoByTwo visualPositionFigure, Vector3 vector3)
+    private void GenerateFigureToo(CubeGenTwoByTwo scriptableVisualFigure, CubeGenTwoByTwo visualPositionFigure, Vector3 pos)
     {
         if ((scriptableVisualFigure & visualPositionFigure) != 0)
         {
-            GameObject boxUpperRight = Instantiate(_scriptableCube.CubePrefab, vector3, Quaternion.identity, transformObj);
+            GameObject cube = Instantiate(_scriptableCube.CubePrefab, pos, Quaternion.identity, transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
-                _playerObjList.Add(boxUpperRight);
+                _playerObjList.Add(cube);
             }
             else
             {
-                _cubeObjList.Add(boxUpperRight);
+                _cubeObjList.Add(cube);
             }
         }
     }
 
-    private void GenerateFigureThree(CubeGenThreeByThree scriptableVisualFigure, CubeGenThreeByThree visualPositionFigure, Vector3 vector3)
+    private void GenerateFigureThree(CubeGenThreeByThree scriptableVisualFigure, CubeGenThreeByThree visualPositionFigure, Vector3 pos)
     {
         if ((scriptableVisualFigure & visualPositionFigure) != 0)
         {
-            GameObject boxUpperRight = Instantiate(_scriptableCube.CubePrefab, vector3, Quaternion.identity, transformObj);
+            GameObject cube = Instantiate(_scriptableCube.CubePrefab, pos, Quaternion.identity, transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
-                _playerObjList.Add(boxUpperRight);
+                _playerObjList.Add(cube);
             }
             else
             {
-                _cubeObjList.Add(boxUpperRight);
+                _cubeObjList.Add(cube);
             }
         }
     }
