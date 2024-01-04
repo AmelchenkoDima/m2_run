@@ -5,6 +5,8 @@ public class CheckCubes : MonoBehaviour
 {
     [SerializeField] private MovementObj _movementObj;
     [SerializeField] private RoadGenerator _roadGenerator;
+    [SerializeField] private WindowManager _windowManager;
+
     [SerializeField] private SpawnObjManager _cube;
     [SerializeField] private SpawnObjManager _player;
 
@@ -12,7 +14,7 @@ public class CheckCubes : MonoBehaviour
     public void OnTriggerEnter(Collider other) 
     {
         List<int> _objList = new List<int>();
-        _movementObj.StartStopMovment(_movementObj.maxSpeed = 0f);
+        _movementObj.StartStopMovement(_movementObj.maxSpeed = 0f);
 
 
         for (int i = 0; i < _player._playerObjList.Count; i++)
@@ -21,8 +23,8 @@ public class CheckCubes : MonoBehaviour
             {
                 _objList.Add(i);
             }
-            _roadGenerator.StartStopMovament(_roadGenerator.maxSpeed = 0f);
-            _movementObj.StartStopMovment(_movementObj.maxSpeed = 0f);
+            _roadGenerator.StartStopMovement(_roadGenerator.maxSpeed = 0f);
+            _movementObj.StartStopMovement(_movementObj.maxSpeed = 0f);
         }
 
 
@@ -30,6 +32,11 @@ public class CheckCubes : MonoBehaviour
         {
             Destroy(_cube._cubeObjList[i]);
             Destroy(_player._playerObjList[i]);
+        }
+
+        if(_player._playerObjList.Count != 0) // нужно подумать над проверкой и вероятно нужна будет карутина 
+        {
+            _windowManager.OpenRestartWindow();
         }
     }
 }

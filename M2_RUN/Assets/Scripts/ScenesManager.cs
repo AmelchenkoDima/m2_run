@@ -10,6 +10,12 @@ public class ScenesManager: MonoBehaviour
     }
 
 
+    public void RestartGame()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
     public void QuitGame()
     {
         Application.Quit();

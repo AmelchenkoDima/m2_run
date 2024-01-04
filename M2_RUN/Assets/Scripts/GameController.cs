@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        _movementObj.ResetMovment();
+        _movementObj.ResetMovement();
         _roadGenerator.ResetLevel();
         _spawnObjManagerPlayer.ResetLvl();
         _spawnObjManagerCube.ResetLvl();

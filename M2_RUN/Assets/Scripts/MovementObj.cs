@@ -17,7 +17,7 @@ public class MovementObj : MonoBehaviour
     }
 
 
-    public void StartStopMovment(float MaxSpeed) 
+    public void StartStopMovement(float MaxSpeed) 
     {
         _speed = MaxSpeed;
     }
@@ -29,16 +29,21 @@ public class MovementObj : MonoBehaviour
     }
 
 
-    public void ResetMovment()
+    public void ResetMovement()
     {
         _speed = 0f;
-        StartStopMovment(maxSpeed);
+        StartStopMovement(maxSpeed);
     }
 
 
    public void ResetPosition()
     {
         _movementGameObj.transform.position += new Vector3(0f, 0f, 30f);
-        StartStopMovment(maxSpeed = 4f);
+        StartStopMovement(maxSpeed = 4f);
+    }
+
+    public void ResetSpeed()
+    {
+        StartStopMovement(maxSpeed);
     }
 }

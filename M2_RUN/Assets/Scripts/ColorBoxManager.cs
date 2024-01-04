@@ -69,7 +69,8 @@ public class ColorBoxManager : MonoBehaviour
 
 
     private void OnMouseDown()
-    {   if(_cube == Cube.PlayerCube)
+    {  
+        if(_cube == Cube.PlayerCube)
         {
             _colorNumBox += 1;
             if (_colorNumBox == 4)
@@ -81,5 +82,4 @@ public class ColorBoxManager : MonoBehaviour
             AssignmentColor();
         }
     }
-
 }

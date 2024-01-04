@@ -13,7 +13,7 @@ public class RoadGenerator : MonoBehaviour
 
     private void Update()
     {
-        MovmentRoad();
+        MovementRoad();
     }
 
 
@@ -41,7 +41,7 @@ public class RoadGenerator : MonoBehaviour
     }
 
 
-    private void MovmentRoad()
+    private void MovementRoad()
     {
         for (int i = 0; i < PoolManager.instance.poolSize; i++)
         {
@@ -58,7 +58,7 @@ public class RoadGenerator : MonoBehaviour
     }
 
 
-    public void StartStopMovament(float MaxSpeed)
+    public void StartStopMovement(float MaxSpeed)
     {
         _speed = MaxSpeed;
     }
@@ -71,12 +71,12 @@ public class RoadGenerator : MonoBehaviour
         {
             CreateRoads();
         }
-        StartStopMovament(maxSpeed);
+        StartStopMovement(maxSpeed);
     }
 
 
     public void ResetSpeed()
     {
-        StartStopMovament(maxSpeed);
+        StartStopMovement(maxSpeed);
     }
 }

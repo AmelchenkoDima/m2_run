@@ -385,6 +385,7 @@
 "Assets/Scripts/RoadGeneranor.cs"
 "Assets/Scripts/ScenesManager.cs"
 "Assets/Scripts/SpawnObjManager.cs"
+"Assets/Scripts/WindowManager.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
