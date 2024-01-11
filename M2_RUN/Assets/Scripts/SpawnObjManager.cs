@@ -14,11 +14,12 @@ public class SpawnObjManager : MonoBehaviour
     [SerializeField] private Cube _cube;
     [SerializeField] private MovementObj _movementObj;
     [SerializeField] private RoadGenerator _roadGenerator;
+    [SerializeField] private ParticleSystemController _particleSystemControllet;
+    [SerializeField] private Transform _transformObj;
 
-    [HideInInspector] public List<GameObject> _cubeObjList = new List<GameObject>();
-    [HideInInspector] public List<GameObject> _playerObjList = new List<GameObject>();
+    [HideInInspector] public List<GameObject> _cubeList = new List<GameObject>();
+    [HideInInspector] public List<GameObject> _playerList = new List<GameObject>();
 
-    public Transform transformObj;
     public int lvl = 0;
 
     private ScriptableCube _scriptableCube;
@@ -26,12 +27,17 @@ public class SpawnObjManager : MonoBehaviour
 
     void Update()
     {
-        if (transformObj.childCount == 0)
+        if (_transformObj.childCount == 0)
         {
             lvl += 1;
-            _cubeObjList.Clear();
-            _playerObjList.Clear();
+
+            _cubeList.Clear();
+            _playerList.Clear();
+
             CheckEnumCube();
+
+            //_particleSystemControllet.DestroyChild();
+
             _movementObj.ResetPosition();
             _roadGenerator.ResetSpeed();
         }
@@ -40,11 +46,11 @@ public class SpawnObjManager : MonoBehaviour
 
     public void ResetLvl()
     {
-        while (transformObj.childCount > 0)
+        while (_transformObj.childCount > 0)
         {
-            Destroy(transformObj.GetChild(0));
-            _cubeObjList.RemoveAt(0);
-            _playerObjList.RemoveAt(0);
+            Destroy(_transformObj.GetChild(0));
+            _cubeList.RemoveAt(0);
+            _playerList.RemoveAt(0);
         }
         lvl += 1;
         CheckEnumCube();
@@ -97,24 +103,24 @@ public class SpawnObjManager : MonoBehaviour
 
     private void InstObjTwoByTwo()
     {
-        GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.LowerLeft, new Vector3(-0.250f, 0.25f, transformObj.position.z));
-        GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.UpperLeft, new Vector3(-0.250f, 0.751f, transformObj.position.z));
-        GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.LowerRight, new Vector3(0.250f, 0.25f, transformObj.position.z));
-        GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.UpperRight, new Vector3(0.250f, 0.751f, transformObj.position.z));
+        GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.LowerLeft, new Vector3(-0.180f, 0.18f, _transformObj.position.z));
+        GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.UpperLeft, new Vector3(-0.180f, 0.540f, _transformObj.position.z));
+        GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.LowerRight, new Vector3(0.180f, 0.18f, _transformObj.position.z));
+        GenerateFigureToo(_scriptableCube.VisualTwoByTwo, CubeGenTwoByTwo.UpperRight, new Vector3(0.180f, 0.540f, _transformObj.position.z));
     }
 
 
     private void InstObjThreeByThree()
     {
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.LowerLeft, new Vector3(-0.501f, 0.25f, transformObj.position.z));
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.LowerCenter, new Vector3(0f, 0.25f, transformObj.position.z));
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.LowerRight, new Vector3(0.501f, 0.25f, transformObj.position.z));
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.MiddleLeft, new Vector3(-0.501f, 0.751f, transformObj.position.z));
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.MiddleCenter, new Vector3(0f, 0.751f, transformObj.position.z));
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.MiddleRight, new Vector3(0.501f, 0.751f, transformObj.position.z));
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.UpperLeft, new Vector3(-0.501f, 1.251f, transformObj.position.z));
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.UpperCenter, new Vector3(0f, 1.251f, transformObj.position.z));
-        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.UpperRight, new Vector3(0.501f, 1.251f, transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.LowerLeft, new Vector3(-0.360f, 0.18f, _transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.LowerCenter, new Vector3(0f, 0.18f, _transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.LowerRight, new Vector3(0.360f, 0.18f, _transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.MiddleLeft, new Vector3(-0.360f, 0.540f, _transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.MiddleCenter, new Vector3(0f, 0.540f, _transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.MiddleRight, new Vector3(0.360f, 0.540f, _transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.UpperLeft, new Vector3(-0.360f, 0.900f, _transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.UpperCenter, new Vector3(0f, 0.900f, _transformObj.position.z));
+        GenerateFigureThree(_scriptableCube.VisualThreeByThree, CubeGenThreeByThree.UpperRight, new Vector3(0.360f, 0.900f, _transformObj.position.z));
     }
 
 
@@ -122,15 +128,15 @@ public class SpawnObjManager : MonoBehaviour
     {
         if ((scriptableVisualFigure & visualPositionFigure) != 0)
         {
-            GameObject cube = Instantiate(_scriptableCube.CubePrefab, pos, Quaternion.identity, transformObj);
+            GameObject cube = Instantiate(_scriptableCube.CubePrefab, pos, Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
-                _playerObjList.Add(cube);
+                _playerList.Add(cube);
             }
             else
             {
-                _cubeObjList.Add(cube);
+                _cubeList.Add(cube);
             }
         }
     }
@@ -139,15 +145,15 @@ public class SpawnObjManager : MonoBehaviour
     {
         if ((scriptableVisualFigure & visualPositionFigure) != 0)
         {
-            GameObject cube = Instantiate(_scriptableCube.CubePrefab, pos, Quaternion.identity, transformObj);
+            GameObject cube = Instantiate(_scriptableCube.CubePrefab, pos, Quaternion.identity, _transformObj);
 
             if (_cube == Cube.PlayerCube)
             {
-                _playerObjList.Add(cube);
+                _playerList.Add(cube);
             }
             else
             {
-                _cubeObjList.Add(cube);
+                _cubeList.Add(cube);
             }
         }
     }
