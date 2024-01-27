@@ -5,7 +5,7 @@ public class MovementObj : MonoBehaviour
     [SerializeField] private float _speed = 0f;
     [SerializeField] private GameObject _movementGameObj;
  
-    public float maxSpeed = 6f;
+    public float maxSpeed = 5f;
 
 
     private void Update()
@@ -39,11 +39,11 @@ public class MovementObj : MonoBehaviour
    public void ResetPosition()
     {
         _movementGameObj.transform.position += new Vector3(0f, 0f, 30f);
-        StartStopMovement(maxSpeed = 4f);
+        StartStopMovement(maxSpeed = 5f);
     }
 
     public void ResetSpeed()
     {
-        StartStopMovement(maxSpeed);
+        StartStopMovement(maxSpeed = 5f);
     }
 }

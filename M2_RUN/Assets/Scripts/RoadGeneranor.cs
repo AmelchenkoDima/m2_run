@@ -22,7 +22,7 @@ public class RoadGenerator : MonoBehaviour
         Vector3 roadPosition = Vector3.zero;
         if (_roadsList.Count > 0)
         {
-            roadPosition = _roadsList[_roadsList.Count - 1].transform.position + new Vector3(0, 0, 9.90f);
+            roadPosition = _roadsList[_roadsList.Count - 1].transform.position + new Vector3(0, 0, 9.50f);
         }
         GameObject road = PoolManager.instance.GetPool(roadPosition);
         _roadsList.Add(road); 
@@ -77,6 +77,6 @@ public class RoadGenerator : MonoBehaviour
 
     public void ResetSpeed()
     {
-        StartStopMovement(maxSpeed);
+        StartStopMovement(maxSpeed = 10f);
     }
 }

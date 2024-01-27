@@ -15,28 +15,33 @@ public class SpawnObjManager : MonoBehaviour
     [SerializeField] private MovementObj _movementObj;
     [SerializeField] private RoadGenerator _roadGenerator;
     [SerializeField] private ParticleSystemController _particleSystemControllet;
-    [SerializeField] private Transform _transformObj;
-
+    
     [HideInInspector] public List<GameObject> _cubeList = new List<GameObject>();
     [HideInInspector] public List<GameObject> _playerList = new List<GameObject>();
 
-    public int lvl = 0;
+    [HideInInspector] public int lvl = 0;
+
+    public Transform _transformObj;
 
     private ScriptableCube _scriptableCube;
 
 
-    void Update()
+    public void UpLvl()
     {
         if (_transformObj.childCount == 0)
         {
             lvl += 1;
 
-            _cubeList.Clear();
-            _playerList.Clear();
+            if (_cube == Cube.PlayerCube)
+            {
+                _playerList.Clear();
+            }
+            else
+            {
+                _cubeList.Clear();
+            }
 
             CheckEnumCube();
-
-            //_particleSystemControllet.DestroyChild();
 
             _movementObj.ResetPosition();
             _roadGenerator.ResetSpeed();
@@ -49,10 +54,18 @@ public class SpawnObjManager : MonoBehaviour
         while (_transformObj.childCount > 0)
         {
             Destroy(_transformObj.GetChild(0));
-            _cubeList.RemoveAt(0);
-            _playerList.RemoveAt(0);
+            if (_cube == Cube.PlayerCube)
+            {
+                _playerList.RemoveAt(0);
+            }
+            else
+            {
+                _cubeList.RemoveAt(0);
+            }
         }
+
         lvl += 1;
+
         CheckEnumCube();
     }
 
@@ -67,7 +80,6 @@ public class SpawnObjManager : MonoBehaviour
         {
             LevelCheckCube();
         }
-
     }
 
 

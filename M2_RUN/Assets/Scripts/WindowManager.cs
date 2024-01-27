@@ -1,14 +1,16 @@
-using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 public class WindowManager : MonoBehaviour
 {
     [SerializeField] private GameObject _ui;
     [SerializeField] private GameObject _restartWindow;
-    private GameObject _settingsWindow;
+    [SerializeField] private GameObject _settingsWindow;
 
     [SerializeField] private RoadGenerator _roadGenerator;
     [SerializeField] private MovementObj _movementObj;
+
 
 
     public void OpenRestartWindow()
@@ -18,28 +20,42 @@ public class WindowManager : MonoBehaviour
     }
 
 
-    public void OpenSettingsWindow()
+    public void OpenSettingsWindowGameScene()
     {
         _ui.SetActive(false);
-        _settingsWindow.SetActive(true);
+        _settingsWindow.SetActive(true);  
 
-        _movementObj.maxSpeed = 0;
+        _movementObj.StartStopMovement(_movementObj.maxSpeed = 0f);
+
+        _roadGenerator.StartStopMovement(_roadGenerator.maxSpeed = 0f);
+
+    }
+
+
+    public void ÑloseSettingsWindowGameScene()
+    {
+        _ui.SetActive(true);
+        
+        _settingsWindow.SetActive(false);
+
         _movementObj.ResetSpeed();
 
-        _roadGenerator.maxSpeed = 0;
         _roadGenerator.ResetSpeed();
     }
 
 
-    public void ÑloseSettingsWindow()
+    public void OpenSettingsWindowMainScene()
+    {
+        _settingsWindow.SetActive(true);
+        _ui.SetActive(false);
+
+    }
+
+
+    public void ÑloseSettingsWindowMainScene()
     {
         _ui.SetActive(true);
         _settingsWindow.SetActive(false);
 
-        _movementObj.maxSpeed = 0;
-        _movementObj.ResetSpeed();
-
-        _roadGenerator.maxSpeed = 10;
-        _roadGenerator.ResetSpeed();
     }
 }
